@@ -1,9 +1,24 @@
 ﻿import os
 import sys
+
+# Ensure the root directory is in Python's module import path
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
+
+from dotenv import load_dotenv
+load_dotenv()
+
 from security.guardrail_check import sanitize_input
 
 def process_dataset(input_file: str, output_file: str):
     print(f"🔒 Processing and sanitizing dataset: {input_file}")
+    
+    # Verify Hugging Face Token loading
+    hf_token = os.getenv("HUGGING_FACE_HUB_TOKEN")
+    if hf_token and hf_token != "hf_your_token_here":
+        print("🔑 Hugging Face token detected and loaded successfully.")
+    else:
+        print("⚠️ Warning: HUGGING_FACE_HUB_TOKEN is not set or using placeholder in .env")
+
     if not os.path.exists(input_file):
         print(f"Creating placeholder sample in {input_file} for testing...")
         os.makedirs(os.path.dirname(input_file), exist_ok=True)
