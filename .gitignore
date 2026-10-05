@@ -1,0 +1,27 @@
+﻿# Environment & Secret Keys
+.env
+*.pem
+*.key
+
+# Datasets & Outputs
+data/raw/*
+data/processed/*
+!data/raw/.gitkeep
+!data/processed/.gitkeep
+
+# Checkpoints & Model Weights
+*.safetensors
+*.bin
+*.gguf
+*.pt
+*.pth
+checkpoints/
+runs/
+wandb/
+
+# Virtual Environments & Python Cache
+venv/
+.venv/
+__pycache__/
+*.pyc
+.DS_Store

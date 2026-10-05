@@ -1,0 +1,10 @@
+﻿define user express insult
+  "You are stupid"
+  "I hate you"
+
+define bot respond calmly
+  "I am programmed to assist with technical machine learning research only."
+
+define flow
+  user express insult
+  bot respond calmly
